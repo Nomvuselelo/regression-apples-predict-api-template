@@ -62,7 +62,8 @@ def _preprocess_data(data):
     
 
     feature_vector_df = feature_vector_df[(feature_vector_df['Commodities'] == 'APPLE GOLDEN DELICIOUS')]
-    predict_vector = feature_vector_df[['Total_Qty_Sold','Stock_On_Hand']]
+    feature_vector_df = feature_vector_df['Date'] = pd.to_datetime(feature_vector_df['Date'])
+    predict_vector = feature_vector_df.drop(['Date', 'Commodities','Province','Size_Grade', 'Container','avg_price_per_kg'], axis=1)
                                 
     # ------------------------------------------------------------------------
 
